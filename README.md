@@ -19,17 +19,27 @@ A clean reboot of the chaotic utility for game tables, improv prompts, and story
 - Offline-ready PWA (installable)
 - NO SOUND (for quiet play)
 
-## 🌍 Installation
+## 📲 Installation
 
 To install on mobile:
 - Open the app in Safari or Chrome
 - Tap **“Add to Home Screen”** to install the PWA
 
-## 📦 Download
+## 🌍 Deployment
 
-Use the latest ZIP or visit the [GitHub Pages site](https://yourusername.github.io/mayhem-web-app).
+To run the app:
+- Upload to GitHub Pages or any HTTPS server
+- Visit `index.html` directly
+- App works offline after first load
+
+GitHub Pages URL (example):  
+`https://yourusername.github.io/mayhem-web-app/`
+
+## 📦 Downloads
+
+The latest ZIP release is available under [Releases](../../releases).  
+You can also clone the repo and run it locally.
 
 ---
 
 > “Let chaos reign.” – Mayhem
-
