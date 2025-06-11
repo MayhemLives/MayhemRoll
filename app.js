@@ -61,7 +61,18 @@ const tables = {
   ["You’re stuck singing everything you say for the next 10 minutes.", 3],
   ["Your shadow detaches and starts mimicking others.", 2],
   ["You get a theme song for 1d4 rounds. It’s loud.", 3],
-  ["You smell like victory. And bubblegum.", 1]
+  ["You smell like victory. And bubblegum.", 1],
+  ["A rain of frogs begins. Only you notice.", 2],
+["You speak fluent Infernal for 1 hour. Uncontrollably.", 2],
+["Your hands become lobster claws. For now.", 2],
+["Every coin in a 100-foot radius turns into glitter.", 1],
+["You become a balloon. Helium voice included.", 3],
+["An invisible audience gives you a standing ovation.", 1],
+["Your nose now detects lies. It glows when someone lies nearby.", 2],
+["You forget one party member’s name. Permanently.", 1],
+["A random god leaves a voicemail in your head.", 3],
+["Your spells only work when you scream them like a battle cry.", 2]
+
   ],
  disasterSeverity: [
   ["Mildly inconvenient: A shoe flies off.", 1],
@@ -83,7 +94,27 @@ const tables = {
   ["Reality wavers. Roll to resist becoming a musical.", 3],
   ["You fall through the floor—into another campaign setting.", 3],
   ["The villain monologues. You’re in the splash zone.", 3],
-  ["You win initiative but forget what you were doing.", 2]
+  ["You win initiative but forget what you were doing.", 2],
+  ["A spectral bard appears mid-song, then vanishes in a scream.", 2],
+["Someone casts *Mage Hand* and slaps the mayor.", 2],
+["A cursed lute begins playing itself — badly.", 1],
+["The ale taps start dispensing blood. Just blood.", 3],
+["A mimic disguises itself as a chair... and bites someone's butt.", 2],
+["All glassware shatters in unison. No one cast *Shatter*.", 2],
+["A summoned imp insists it has a reservation.", 1],
+["The fireplace begins whispering secrets. Loudly.", 2],
+["A patron vomits up a tiny screaming homunculus.", 3],
+["A floating eye watches the party, then blinks out of existence.", 2],
+["A chicken explodes. No one admits bringing a chicken.", 2],
+["Someone casts *Prestidigitation*... and turns their pants into soup.", 1],
+["The tavern dog begins quoting prophecy. No one listens.", 2],
+["A goblin tries to pay in teeth. They aren’t his.", 2],
+["A pie fight breaks out. There was only one pie.", 1],
+["The furniture starts slowly migrating toward the exit.", 2],
+["A tipsy wizard starts turning everyone’s hats into fish.", 2],
+["A goat appears and challenges the strongest party member to a duel.", 3],
+["Someone’s armor starts laughing. It’s contagious.", 2],
+["A magical scroll bursts into flame and recites your backstory.", 3]
 ],
   introLines: [
    ["I'm the wind that blows your spellbook away.", 0],
