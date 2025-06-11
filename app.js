@@ -1,94 +1,9 @@
 const tables = {
-  battleCries: [
-   ["Let chaos reign!", 0],
-  ["For the glitter gods!", 0],
-  ["This one's for mayhem!", 0],
-  ["You just triggered my trap monologue!", 0],
-  ["By the beard of my barista!", 0],
-  ["May my aim be messy and magnificent!", 0],
-  ["For doom! For snacks!", 0],
-  ["No refunds!", 0],
-  ["Hope you have insurance!", 0],
-  ["This one's going on my mixtape!", 0],
-  ["I rage... artistically.", 0],
-  ["For the honor of poorly drawn maps!", 0],
-  ["Scream now, question later!", 0],
-  ["By dice and destiny!", 0],
-  ["With great power comes great irresponsibility!", 0],
-  ["In the name of the utterly avoidable!", 0],
-  ["FOR THE MEME!", 0],
-  ["Time to fail forward!", 0],
-  ["I cast fist!", 0],
-  ["This is for last Tuesday’s TPK!", 0]
-  ],
-  wildMagic: [
-   ["You swap bodies with the nearest ferret.", 1],
-  ["Everything turns polka-dot for 1d4 hours.", 2],
-  ["You summon a mariachi band that follows you around.", 3],
-  ["Your voice echoes like you're in a cavern.", 1],
-  ["You sneeze and cast Fireball centered on yourself.", 3],
-  ["You grow a long, silken wizard beard. It grants no power.", 1],
-  ["Gravity is now optional for your pants.", 2],
-  ["You shout 'BANG!' and a firework goes off… somewhere.", 2],
-  ["You glow like a disco ball in combat.", 2],
-  ["For the next minute, you must narrate your actions in rhyme.", 2],
-  ["Your next spell is accompanied by a kazoo orchestra.", 3],
-  ["All beverages within 30 feet turn into soda.", 1],
-  ["You briefly become a cartoon version of yourself.", 2],
-  ["You become magnetic, but only to forks and spoons.", 2],
-  ["Everyone sees your childhood imaginary friend.", 3],
-  ["Roll again. But louder.", 1],
-  ["You’re stuck singing everything you say for the next 10 minutes.", 3],
-  ["Your shadow detaches and starts mimicking others.", 2],
-  ["You get a theme song for 1d4 rounds. It’s loud.", 3],
-  ["You smell like victory. And bubblegum.", 1]
-  ],
- disasterSeverity: [
-  ["Mildly inconvenient: A shoe flies off.", 1],
-  ["Someone’s hat catches fire, but it’s fine.", 1],
-  ["You trip, but make it look intentional.", 1],
-  ["Awkward silence. And then a loud crash.", 1],
-  ["Moderate disruption: A table flips.", 2],
-  ["Spilled drinks everywhere—someone screams.", 2],
-  ["Something explodes. No one knows why.", 2],
-  ["A rival shows up mid-battle.", 2],
-  ["You accidentally summon a goat. It’s angry.", 2],
-  ["Chaotic mess: Your loot is now cursed.", 2],
-  ["A storm begins inside the tavern.", 2],
-  ["All lights dim. A disembodied laugh echoes.", 2],
-  ["A wall collapses, revealing… another wall.", 1],
-  ["Someone starts a slow clap. No one joins in.", 1],
-  ["You turn invisible, but only from yourself.", 2],
-  ["Total catastrophe: An elder god appears. Hungry.", 3],
-  ["Reality wavers. Roll to resist becoming a musical.", 3],
-  ["You fall through the floor—into another campaign setting.", 3],
-  ["The villain monologues. You’re in the splash zone.", 3],
-  ["You win initiative but forget what you were doing.", 2]
-],
-  introLines: [
-  ["I'm the wind that blows your spellbook away.", 0],
-  ["I'm the squeaky hinge in your stealth roll.", 0],
-  ["I'm the glitter in your potion.", 0],
-  ["I'm the shadow behind the DM screen.", 0],
-  ["I'm the natural one in your final attack.", 0],
-  ["I'm the duck you didn't see coming.", 0],
-  ["I'm the wild surge in your bedtime story.", 0],
-  ["I'm the mimicked treasure chest of fate.", 0],
-  ["I'm the table flip before initiative.", 0],
-  ["I'm the potion labeled 'Trust Me.'", 0],
-  ["I'm the CR 1/4 with a death wish.", 0],
-  ["I'm the reason your torch went out.", 0],
-  ["I'm the riddle with no answer and no reward.", 0],
-  ["I'm the wand set to explode.", 0],
-  ["I'm the third failed perception check.", 0],
-  ["I'm the fart that echoed in the silence spell.", 0],
-  ["I'm the random encounter at 2AM.", 0],
-  ["I'm the cursed loot you forgot to identify.", 0],
-  ["I'm the trap disguised as a healing fountain.", 0],
-  ["I'm the bard your party told you not to worry about.", 0]
-]
+  battleCries: ["Let chaos reign!", "For the glitter gods!", "This one's for mayhem!"],
+  wildMagic: ["You glow like a disco ball.", "Your nose grows 3 inches.", "You summon a goat."],
+  disasterSeverity: ["You flip a table.", "You accidentally explode.", "The floor collapses."],
+  introLines: ["I'm the wind that blows your spellbook away.", "I'm the squeaky hinge in your stealth roll.", "I'm the glitter in your potion."]
 };
-
 
 let score = 0;
 let lastResults = {};
@@ -99,57 +14,20 @@ function rollTable() {
   const results = tables[select];
   let result;
   let attempts = 0;
-  let text = "";
-  let scoreValue = 0;
+  do {
+    result = results[Math.floor(Math.random() * results.length)];
+    attempts++;
+  } while (result === lastResults[select] && attempts < 10);
 
-  if (select === "disasterSeverity" || "wildMagic") {
-    do {
-      result = results[Math.floor(Math.random() * results.length)];
-      text = result[0];
-      scoreValue = result[1];
-      attempts++;
-    } while (text === lastResults[select] && attempts < 10);
-
-    lastResults[select] = text;
-    document.getElementById("result").textContent = text;
-    updateScore(scoreValue);
-    logHistory("Rolled from " + select, text);
-  } else {
-    do {
-      result = results[Math.floor(Math.random() * results.length)];
-      attempts++;
-    } while (result === lastResults[select] && attempts < 10);
-
-    lastResults[select] = result;
-    document.getElementById("result").textContent = result;
-    logHistory("Rolled from " + select, result);
-  }
+  lastResults[select] = result;
+  document.getElementById("result").textContent = result;
+  logHistory("Rolled from " + select, result);
 }
 
 function updateScore(delta) {
   score += delta;
   document.getElementById("score").textContent = score;
   logHistory("Score " + (delta > 0 ? "increased" : "decreased"), score);
-  updateMayhemMeter(score);
-}
-
-function updateMayhemMeter(score) {
-  const fill = document.getElementById("chaos-meter-fill");
-  const label = document.getElementById("chaos-meter-label");
-
-  const cappedScore = Math.min(Math.max(score, 0), 100);
-  fill.style.width = Math.min(cappedScore, 100) + "%";
-
-  if (score < 10) {
-    fill.style.background = "limegreen";
-    label.textContent = "Chill";
-  } else if (score < 30) {
-    fill.style.background = "gold";
-    label.textContent = "Chaotic";
-  } else {
-    fill.style.background = "crimson";
-    label.textContent = "Total Mayhem";
-  }
 }
 
 function logHistory(action, value) {
