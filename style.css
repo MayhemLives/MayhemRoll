@@ -8,12 +8,23 @@ body {
 }
 button {
   margin-top: 1rem;
-  padding: 1rem 2rem;
+  padding: .5rem 1rem;
   font-size: 1.2rem;
   background-color: crimson;
   border: none;
   color: white;
   cursor: pointer;
+  height: 60px;
+  min-width: 100px;
+  line-height: 60px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.button-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
 }
 #result {
   margin-top: 2rem;
